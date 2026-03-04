@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 17.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="zh-CN"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;扫码加入微信群&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body { font-family: sans-serif; text-align: center; padding: 30px; background: #f8f9fa; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.container { max-width: 500px; margin: 0 auto; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.qrcode { width: 280px; height: 280px; background: white; padding: 10px; border-radius: 12px; margin: 20px 0; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.qrcode img { width: 100%; image-rendering: pixelated; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; margin: 10px; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#shareLink { margin-top: 20px; display: none; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="container"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;扫码加入微信群&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="qrcode"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;img src="qrcode.jpg" alt="微信群二维码" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p&gt;长按识别二维码加入群聊&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button id="registerBtn"&gt;我要推广，登记我的链接&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="shareLink"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>你的专属链接：&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;strong id="linkText"&gt;&lt;/strong&gt;&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button onclick="copyLink()"&gt;一键复制&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// === 第1处：改成你的 Gitee Pages 地址 ===</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const BASE_URL = "https://Jefflin.gitee.io"; // ← 改这里！比如 https://xiaoming123.gitee.io</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>// === 第2处：改成你的金数据表单链接 ===</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const JINSHUJU_URL = "https://xtybbciv.jsjform.com/f/WXrUCk"; // ← 改这里！</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let myID = localStorage.getItem('my_ref_id');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if (!myID) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>myID = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>localStorage.setItem('my_ref_id', myID);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>document.getElementById('registerBtn').onclick = function() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// 跳转到金数据，并自动带入 referrer</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const fullUrl = JINSHUJU_URL + "?field_1=" + encodeURIComponent(myID) + "&amp;field_2=" + encodeURIComponent(new Date().toISOString());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>window.open(fullUrl, '_blank');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>// 显示分享链接</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const shareUrl = BASE_URL + "?ref=" + myID;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>document.getElementById('linkText').innerText = shareUrl;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>document.getElementById('shareLink').style.display = 'block';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>function copyLink() {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const text = document.getElementById('linkText').innerText;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if (navigator.clipboard) {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>navigator.clipboard.writeText(text).then(() =&gt; alert("复制成功！"));</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>} else {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>prompt("请手动复制：", text);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
